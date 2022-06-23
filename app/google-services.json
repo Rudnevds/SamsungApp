@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "982636195004",
+    "project_id": "samsungapp-58ffc",
+    "storage_bucket": "samsungapp-58ffc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982636195004:android:b631c61b72b6113a0774b9",
+        "android_client_info": {
+          "package_name": "com.example.samsungapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982636195004-35eojohha0no1lbj0li0o9cjaomilie6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuMqgKw3Cpqdqrx6L5ITMnAA4YI3VKrrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982636195004-35eojohha0no1lbj0li0o9cjaomilie6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
