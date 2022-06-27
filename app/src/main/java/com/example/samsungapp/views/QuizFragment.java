@@ -168,7 +168,7 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     //Появление кнопки далее
     private void showNextBtn() {
         if (currentQueNo == totalQuestions){
-            nextQueBtn.setText("Далее");
+            nextQueBtn.setText(getResources().getString(R.string.next_step));
             nextQueBtn.setEnabled(true);
             nextQueBtn.setVisibility(View.VISIBLE);
         }else{
@@ -212,10 +212,10 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
     }
 
     private void submitResults() {
-        HashMap<String , Object> resultMap = new HashMap<>();
-        resultMap.put("Правильно!" , correctAnswer);
-        resultMap.put("Неправильно!" , wrongAnswer);
-        resultMap.put("Нет ответа" , notAnswerd);
+        HashMap<String, Object> resultMap = new HashMap<>();
+        resultMap.put(getResources().getString(R.string.positive_verdict), correctAnswer);
+        resultMap.put(getResources().getString(R.string.negative_verdict), wrongAnswer);
+        resultMap.put(getResources().getString(R.string.neutral_verdict), notAnswerd);
 
         viewModel.addResults(resultMap);
 

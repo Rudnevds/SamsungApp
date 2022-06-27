@@ -12,9 +12,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.List;
 
 public class QuizListRepository {
+
     private onFirestoreTaskComplete onFirestoreTaskComplete;
     private FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
-    private CollectionReference reference =firebaseFirestore.collection("Quiz");
+
+    private CollectionReference reference = firebaseFirestore.collection("Quiz");
 
     public QuizListRepository (onFirestoreTaskComplete onFirestoreTaskComplete) {
         this.onFirestoreTaskComplete=onFirestoreTaskComplete;

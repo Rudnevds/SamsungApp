@@ -34,7 +34,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="HTML"
+                android:text="@string/lbl_html"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"

@@ -77,9 +77,9 @@ public class ResultFragment extends Fragment {
             @Override
             public void onChanged(HashMap<String, Long> stringLongHashMap) {
 
-                Long correct = stringLongHashMap.get("Правильно");
-                Long wrong = stringLongHashMap.get("Неправильно");
-                Long noAnswer = stringLongHashMap.get("Нет ответа");
+                Long correct = stringLongHashMap.get(getResources().getString(R.string.positive_verdict));
+                Long wrong = stringLongHashMap.get(getResources().getString(R.string.negative_verdict));
+                Long noAnswer = stringLongHashMap.get(getResources().getString(R.string.neutral_verdict));
 
                 correctAnswer.setText(correct.toString()); //Правильные ответы
                 wrongAnswer.setText(wrong.toString()); //неправильные

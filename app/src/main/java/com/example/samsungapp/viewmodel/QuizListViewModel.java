@@ -1,6 +1,5 @@
 package com.example.samsungapp.viewmodel;
 
-import android.nfc.Tag;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -20,7 +19,6 @@ public class QuizListViewModel extends ViewModel implements QuizListRepository.o
     public MutableLiveData<List<QuizListModel>> getQuizListLiveData() {
         return quizListLiveData;
     }
-
     public QuizListViewModel(){
         repository.getQuizData();
     }
@@ -31,6 +29,6 @@ public class QuizListViewModel extends ViewModel implements QuizListRepository.o
 
     @Override
     public void onError(Exception e) {
-        Log.d("QuizERROR", "onError: " +e.getMessage());
+        Log.d("QuizError", "Error: " + e.getMessage());
     }
 }

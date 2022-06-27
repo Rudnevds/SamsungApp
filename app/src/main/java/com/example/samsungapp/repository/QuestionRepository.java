@@ -1,5 +1,7 @@
 package com.example.samsungapp.repository;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.example.samsungapp.Model.QuestionModel;
@@ -22,6 +24,7 @@ public class QuestionRepository {
     private OnResultAdded onResultAdded;
     private String currentUserId= FirebaseAuth.getInstance().getCurrentUser().getUid();
     private OnResultLoad onResultLoad;
+    private static Context context;
 
     public void getResults() {
         //Работа базы данных с результатами
@@ -30,9 +33,9 @@ public class QuestionRepository {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()){
-                            resultMap.put("Правильно", task.getResult().getLong("Правильно!"));
-                            resultMap.put("Неправильно", task.getResult().getLong("Неправильно!"));
-                            resultMap.put("Нет ответа", task.getResult().getLong("Нет ответа"));
+                            resultMap.put("Правильно:", task.getResult().getLong("Правильно:"));
+                            resultMap.put("Неправильно:", task.getResult().getLong("Неправильно:"));
+                            resultMap.put("Нет ответа:", task.getResult().getLong("Нет ответа:"));
                             onResultLoad.onResultLoad(resultMap);
                         } else
                             onResultLoad.onError(task.getException());

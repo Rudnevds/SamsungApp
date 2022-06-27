@@ -71,7 +71,7 @@ public class SignInFragment extends Fragment {
                         }
                     });
                 }else{
-                    Toast.makeText(getContext(), "Пожалуйста введите свой логин и пароль", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.empty_line), Toast.LENGTH_SHORT).show();
                 }
             }
         });
