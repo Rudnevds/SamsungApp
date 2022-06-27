@@ -61,8 +61,7 @@ public class SignInFragment extends Fragment {
                 String email = editEmail.getText().toString();
                 String pass = editPass.getText().toString();
                 if (!email.isEmpty() && !pass.isEmpty()){
-                    viewModel.signIn(email , pass);
-                    Toast.makeText(getContext(), "Вход успешно завершён", Toast.LENGTH_SHORT).show();
+                    viewModel.signIn(email, pass);
                     viewModel.getFirebaseUserMutableLiveData().observe(getViewLifecycleOwner(), new Observer<FirebaseUser>() {
                         @Override
                         public void onChanged(FirebaseUser firebaseUser) {

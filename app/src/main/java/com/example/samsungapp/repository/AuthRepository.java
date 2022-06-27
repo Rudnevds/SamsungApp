@@ -44,9 +44,10 @@ public class AuthRepository {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    Toast.makeText(application, "Регистрация прошла успешно", Toast.LENGTH_SHORT).show();
                     firebaseUserMutableLiveData.postValue(firebaseAuth.getCurrentUser());
                 } else{
-                    Toast.makeText(application,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(application, "Ошибка регистрации: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -60,9 +61,10 @@ public class AuthRepository {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    Toast.makeText(application, "Вход успешно завершён", Toast.LENGTH_SHORT).show();
                     firebaseUserMutableLiveData.postValue(firebaseAuth.getCurrentUser());
                 } else {
-                    Toast.makeText(application, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(application, "Ошибка авторизации: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

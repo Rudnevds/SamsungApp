@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,8 +63,7 @@ public class SignUpFragment extends Fragment {
                 String email = editEmail.getText().toString();
                 String pass = editPass.getText().toString();
                 if (!email.isEmpty() && !pass.isEmpty()){
-                    viewModel.signUp(email , pass);
-                    Toast.makeText(getContext(), "Регистрация прошла успешно", Toast.LENGTH_SHORT).show();
+                    viewModel.signUp(email, pass);
                     viewModel.getFirebaseUserMutableLiveData().observe(getViewLifecycleOwner(), new Observer<FirebaseUser>() {
                         @Override
                         public void onChanged(FirebaseUser firebaseUser) {
