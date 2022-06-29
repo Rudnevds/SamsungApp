@@ -22,6 +22,7 @@ import androidx.navigation.Navigation;
 import com.bumptech.glide.Glide;
 import com.example.samsungapp.Model.QuizListModel;
 import com.example.samsungapp.R;
+import com.example.samsungapp.network.NetworkTread;
 import com.example.samsungapp.viewmodel.QuizListViewModel;
 
 import java.util.List;
@@ -52,14 +53,7 @@ public class DetailFragment extends Fragment {
         viewModel = new ViewModelProvider(this , ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getActivity().getApplication())).get(QuizListViewModel.class);
     }
-    public boolean internetIsConnected() {
-        try {
-            String command = "ping -c 1 google.com";
-            return (Runtime.getRuntime().exec(command).waitFor() == 0);
-        } catch (Exception e) {
-            return false;
-        }
-    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -100,7 +94,9 @@ public class DetailFragment extends Fragment {
         startQuizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (internetIsConnected()) {
+                NetworkTread network = new NetworkTread();
+                network.execute();
+                if (network.doInBackground()) {
                 DetailFragmentDirections.ActionDetailFragmentToQuizragment action =
                         DetailFragmentDirections.actionDetailFragmentToQuizragment();
 

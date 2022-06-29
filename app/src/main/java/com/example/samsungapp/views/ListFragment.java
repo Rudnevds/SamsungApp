@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.samsungapp.Adapter.QuizListAdapter;
 import com.example.samsungapp.Model.QuizListModel;
 import com.example.samsungapp.R;
+import com.example.samsungapp.network.NetworkTread;
 import com.example.samsungapp.viewmodel.QuizListViewModel;
 
 import java.util.List;
@@ -71,17 +72,12 @@ public class ListFragment extends Fragment implements QuizListAdapter.OnItemClic
             }
         });
     }
-    public boolean internetIsConnected() {
-        try {
-            String command = "ping -c 1 google.com";
-            return (Runtime.getRuntime().exec(command).waitFor() == 0);
-        } catch (Exception e) {
-            return false;
-        }
-    }
+
     @Override
     public void onItemClick(int position) {
-        if (internetIsConnected()) {
+        NetworkTread networkTread = new NetworkTread();
+        networkTread.execute();
+        if (networkTread.doInBackground()) {
             ListFragmentDirections.ActionListFragmentToDetailFragment action =ListFragmentDirections.actionListFragmentToDetailFragment();
             action.setPosition(position);
             navController.navigate(action);}

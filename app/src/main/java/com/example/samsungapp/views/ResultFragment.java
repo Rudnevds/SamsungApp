@@ -77,6 +77,7 @@ public class ResultFragment extends Fragment {
             @Override
             public void onChanged(HashMap<String, Long> stringLongHashMap) {
 
+
                 Long correct = stringLongHashMap.get(getResources().getString(R.string.positive_verdict));
                 Long wrong = stringLongHashMap.get(getResources().getString(R.string.negative_verdict));
                 Long noAnswer = stringLongHashMap.get(getResources().getString(R.string.neutral_verdict));
@@ -86,14 +87,20 @@ public class ResultFragment extends Fragment {
                 notAnswered.setText(noAnswer.toString()); //без ответа
 
                 //Подсчёт процента итогого результата
+                new Thread() {
+                    @Override
+                public void run() {
+
                 Long total = correct + wrong + noAnswer;
                 Long percent = (correct*100)/total;
 
                 percentTv.setText(String.valueOf(percent));
                 scoreProgressbar.setProgress(percent.intValue());
-
+                    }
+                }.start();
             }
         });
 
     }
 }
+
