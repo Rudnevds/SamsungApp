@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,7 +52,14 @@ public class DetailFragment extends Fragment {
         viewModel = new ViewModelProvider(this , ViewModelProvider.AndroidViewModelFactory
                 .getInstance(getActivity().getApplication())).get(QuizListViewModel.class);
     }
-
+    public boolean internetIsConnected() {
+        try {
+            String command = "ping -c 1 google.com";
+            return (Runtime.getRuntime().exec(command).waitFor() == 0);
+        } catch (Exception e) {
+            return false;
+        }
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -88,15 +96,22 @@ public class DetailFragment extends Fragment {
             }
         });
 
+
         startQuizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (internetIsConnected()) {
                 DetailFragmentDirections.ActionDetailFragmentToQuizragment action =
                         DetailFragmentDirections.actionDetailFragmentToQuizragment();
 
                 action.setQuizId(quizId);
                 action.setTotalQueCount(totalQueCount);
-                navController.navigate(action);
+                navController.navigate(action);}
+                else {
+                    Toast.makeText(getContext(), "Error network", Toast.LENGTH_SHORT).show();
+                    navController.navigate(R.id.action_detailFragment_to_listFragment);
+                }
+
             }
         });
     }
