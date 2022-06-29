@@ -66,6 +66,7 @@ public class SignInFragment extends Fragment {
                         @Override
                         public void onChanged(FirebaseUser firebaseUser) {
                             if (firebaseUser !=null){
+                                if (navController.getCurrentDestination().getId() == R.id.signInFragment)
                                 navController.navigate(R.id.action_signInFragment_to_listFragment);
                             }
                         }

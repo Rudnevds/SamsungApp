@@ -1,6 +1,5 @@
 package com.example.samsungapp.viewmodel;
 
-import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -15,7 +14,6 @@ import java.util.List;
 public class QuestionViewModel extends ViewModel implements QuestionRepository.OnQuestionLoad, QuestionRepository.OnResultAdded, QuestionRepository.OnResultLoad {
     private MutableLiveData<List<QuestionModel>> questionMutableLiveData;
     private QuestionRepository repository;
-    private static Context context;
     private  MutableLiveData<HashMap<String,Long>> resultMutableLiveData;
     public MutableLiveData<HashMap<String, Long>> getResultMutableLiveData() {
         return resultMutableLiveData;

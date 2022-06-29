@@ -1,7 +1,5 @@
 package com.example.samsungapp.repository;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 
 import com.example.samsungapp.Model.QuestionModel;
@@ -24,7 +22,7 @@ public class QuestionRepository {
     private OnResultAdded onResultAdded;
     private String currentUserId= FirebaseAuth.getInstance().getCurrentUser().getUid();
     private OnResultLoad onResultLoad;
-    private static Context context;
+
 
     public void getResults() {
         //Работа базы данных с результатами

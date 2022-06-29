@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +51,7 @@ public class ListFragment extends Fragment implements QuizListAdapter.OnItemClic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //Идентификация всех элементов на экране
+//Идентификация всех элементов на экране
         recyclerView=view.findViewById(R.id.listQuizRecycleview);
         progressBar=view.findViewById(R.id.quizListProgressbar);
         navController= Navigation.findNavController(view);
@@ -70,11 +71,23 @@ public class ListFragment extends Fragment implements QuizListAdapter.OnItemClic
             }
         });
     }
-
+    public boolean internetIsConnected() {
+        try {
+            String command = "ping -c 1 google.com";
+            return (Runtime.getRuntime().exec(command).waitFor() == 0);
+        } catch (Exception e) {
+            return false;
+        }
+    }
     @Override
     public void onItemClick(int position) {
-        ListFragmentDirections.ActionListFragmentToDetailFragment action =ListFragmentDirections.actionListFragmentToDetailFragment();
-        action.setPosition(position);
-        navController.navigate(action);
+        if (internetIsConnected()) {
+            ListFragmentDirections.ActionListFragmentToDetailFragment action =ListFragmentDirections.actionListFragmentToDetailFragment();
+            action.setPosition(position);
+            navController.navigate(action);}
+        else {
+            Toast.makeText(getContext(), "Error network", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
